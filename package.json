@@ -8,8 +8,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "fs": "0.0.1-security",
     "react": "16.8.6",
-    "react-native": "0.60.5"
+    "react-native": "0.60.5",
+    "react-native-cheerio": "^1.0.0-rc.4",
+    "react-native-dialog-input": "^1.0.7",
+    "react-native-gesture-handler": "^1.4.1",
+    "react-native-ticker": "^2.2.1",
+    "react-navigation": "^4.0.7",
+    "react-navigation-stack": "^1.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
