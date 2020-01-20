@@ -9,7 +9,9 @@ $react-native run-android
 
 # 打包上架的 app (https://facebook.github.io/react-native/docs/signed-apk-android)
 1. 用java keytool 產生 my-upload-key.keystore
-2. 放置 android/app/my-upload-key.keystore
+$ keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+
+2. 放置於 android/app/my-upload-key.keystore
 3. android/gradle.properties
     MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
     MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
