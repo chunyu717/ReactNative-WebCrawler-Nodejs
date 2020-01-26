@@ -15,28 +15,22 @@ import {
   Text,
   Alert,
   Image,
-  TouchableHighlight,
-  Modal,
+  // TouchableHighlight,
+  // Modal,
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
+  // Header,
+  // LearnMoreLinks,
+  // DebugInstructions,
+  // ReloadInstructions,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-//import Ticker from "react-native-ticker";
-//const phantom = require('phantom'); // import module 
-//import phantom from "phantom" // import module 
-//import cheerio from 'react-native-cheerio'
-//import phantom from 'phantom'
-//const puppeteer = require('puppeteer');
 
-import DisplayModal from './components/DisplayModal';
+// import DisplayModal from './components/DisplayModal';
 import DialogInput from 'react-native-dialog-input';
 
 function Separator() {
@@ -44,7 +38,6 @@ function Separator() {
 }
 
 class HomeScreen extends React.Component {
-
   static navigationOptions = {
     title: 'Welcome',
     header: null,
@@ -60,7 +53,7 @@ class HomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(()=> this.getEvent(), 10000);
+    this.timer = setInterval(() => this.getEvent(), 10000);
   }
 
   componentWillUnmount() {
@@ -68,34 +61,19 @@ class HomeScreen extends React.Component {
   }
 
   async getEvent() {
-    // fetch('https://122.116.214.159/api/listEvent', {})
-    // //fetch('https://hosenmassage.ddns.net/api/listEvent', {})
-    // .then((response) => {
-    //   // 這裡會得到一個 ReadableStream 的物件 , 可以透過 blob(), json(), text() 轉成可用的資訊
-    //   return response.json(); 
-    // }).then((jsonData) => {
-    //   if( jsonData.message[0].title !== '---' ) {
-    //     this.setState( {dataSource: jsonData.message  }   )
-    //   }
-    // }).catch((err) => {
-    //   console.warn('錯誤:', err);
-    // });
-
     try {
-      console.warn('aaa');
-      let response = await fetch(
-        'https://hosenmassage.ddns.net/api/listEvent',
-        //'http://122.116.214.159/api/listEvent',
-      );
-      console.warn('bbb');
+      let response = await fetch('https://hosenmassage.ddns.net/api/listEvent');
       let responseJson = await response.json();
-      if( responseJson && responseJson.message && responseJson.message[0].title !== '---' ) {
-         this.setState( {dataSource: responseJson.message  }   )
+      if (
+        responseJson &&
+        responseJson.message &&
+        responseJson.message[0].title !== '---'
+      ) {
+        this.setState({dataSource: responseJson.message});
       }
       console.warn('ccc');
     } catch (error) {
       console.warn('eee');
-      //console.warn(error);
     }
 
     // fetch('https://122.116.214.159/api/listEvent', {
@@ -116,7 +94,6 @@ class HomeScreen extends React.Component {
     // .catch((error) => {
     //   console.error(error);
     // });;
-
   }
 
   submit() {
@@ -126,24 +103,23 @@ class HomeScreen extends React.Component {
   render() {
     const {navigate} = this.props.navigation;
 
-    const items = this.state.dataSource.map((item, key) =>
-        <View key={item.index} /*style={{backgroundColor: 'blue'}} */>
-          <Text style={styles.text2} > {item.index} 診 </Text>
-          <Text style={styles.text} >
-            {item.title}
-          </Text>
-          <Button
-            title=  "主動叫號通知"
-            //onPress={() => Alert.alert('Simple Button pressed')}
-            onPress={ () => this.setState({isAlertVisible: true}) }
-          />
-          <Separator key={ 1000 + item.index} />
-        </View>
-    );
+    const items = this.state.dataSource.map((item, key) => (
+      <View key={item.index} /*style={{backgroundColor: 'blue'}} */>
+        <Text style={styles.text2}> {item.index} 診 </Text>
+        <Text style={styles.text}>{item.title}</Text>
+        <Button
+          title="主動叫號通知"
+          //onPress={() => Alert.alert('Simple Button pressed')}
+          onPress={() => this.setState({isAlertVisible: true})}
+        />
+        <Separator key={1000 + item.index} />
+      </View>
+    ));
 
     return (
-      <SafeAreaView style={styles.container} >
+      <SafeAreaView style={styles.container}>
         <Image
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{width: '100%'}}
           source={require('./img/logo_9030.jpg')}
         />
@@ -161,16 +137,19 @@ class HomeScreen extends React.Component {
               onPress={() => navigate('Profile', {name: 'Jane'})}
             />
           </View>
-          <DialogInput isDialogVisible={this.state.isAlertVisible}
-                     title={"Login"}
-                     message={"Enter your name"}
-                     hintInput ={"hint for the input"}
-                     submitInput={ (inputText) => {this.submit(inputText)} }
-                     closeDialog={ () => this.setState({isAlertVisible:false}) }>
-         </DialogInput>
+          <DialogInput
+            isDialogVisible={this.state.isAlertVisible}
+            title={'Login'}
+            message={'Enter your name'}
+            hintInput={'hint for the input'}
+            submitInput={inputText => {
+              this.submit(inputText);
+            }}
+            closeDialog={() => this.setState({isAlertVisible: false})}
+          />
         </View>
-        
-        {/* <DisplayModal 
+
+        {/* <DisplayModal
             //image = { Krunal }
             //data = "Krunal"
             display = { this.state.display }
@@ -178,8 +157,7 @@ class HomeScreen extends React.Component {
       </SafeAreaView>
     );
   }
-};
-
+}
 
 const styles = StyleSheet.create({
   // scrollView: {
@@ -219,7 +197,6 @@ const styles = StyleSheet.create({
   //   textAlign: 'right',
   // },
 
-
   container: {
     flex: 1,
     //paddingTop: -50,
@@ -250,11 +227,10 @@ const styles = StyleSheet.create({
   text2: {
     fontSize: 40,
     //color: "#FFF",
-    backgroundColor: "#FFFF00" ,
+    backgroundColor: '#FFFF00',
     textAlign: 'center',
     color: Colors.black,
   },
-
 });
 
 class ProfileScreen extends React.Component {
@@ -277,6 +253,6 @@ const MainNavigator = createStackNavigator({
   Profile: {screen: ProfileScreen},
 });
 
-App = createAppContainer(MainNavigator);
+const App = createAppContainer(MainNavigator);
 
 export default App;
