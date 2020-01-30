@@ -71,29 +71,9 @@ class HomeScreen extends React.Component {
       ) {
         this.setState({dataSource: responseJson.message});
       }
-      console.warn('ccc');
     } catch (error) {
-      console.warn('eee');
+      console.warn(error);
     }
-
-    // fetch('https://122.116.214.159/api/listEvent', {
-    //   method: 'GET',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //     "Connection": "close",
-    //   }
-    // })
-    // .then((response) => response.json())
-    // .then((responseJson) => {
-    //   if( responseJson && responseJson.message && responseJson.message[0].title !== '---' ) {
-    //     this.setState( {dataSource: responseJson.message  }   )
-    //   }
-    //   console.warn('bbb');
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });;
   }
 
   submit() {
@@ -109,7 +89,6 @@ class HomeScreen extends React.Component {
         <Text style={styles.text}>{item.title}</Text>
         <Button
           title="主動叫號通知"
-          //onPress={() => Alert.alert('Simple Button pressed')}
           onPress={() => this.setState({isAlertVisible: true})}
         />
         <Separator key={1000 + item.index} />
@@ -123,7 +102,9 @@ class HomeScreen extends React.Component {
           style={{width: '100%'}}
           source={require('./img/logo_9030.jpg')}
         />
+
         {items}
+
         <Separator />
         <View>
           <View style={styles.fixToText}>
@@ -133,7 +114,6 @@ class HomeScreen extends React.Component {
             />
             <Button
               title="Right button"
-              //onPress={() => Alert.alert('Right button pressed')}
               onPress={() => navigate('Profile', {name: 'Jane'})}
             />
           </View>
@@ -148,7 +128,6 @@ class HomeScreen extends React.Component {
             closeDialog={() => this.setState({isAlertVisible: false})}
           />
         </View>
-
         {/* <DisplayModal
             //image = { Krunal }
             //data = "Krunal"
@@ -196,7 +175,6 @@ const styles = StyleSheet.create({
   //   paddingRight: 12,
   //   textAlign: 'right',
   // },
-
   container: {
     flex: 1,
     //paddingTop: -50,
@@ -216,14 +194,12 @@ const styles = StyleSheet.create({
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-
   text: {
     fontSize: 40,
     //color: "#FFF",
     textAlign: 'center',
     color: Colors.black,
   },
-
   text2: {
     fontSize: 40,
     //color: "#FFF",
