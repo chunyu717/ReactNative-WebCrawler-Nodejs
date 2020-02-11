@@ -56,6 +56,21 @@ $ D:\workspace\HosenMobileRN\android> .\gradlew assembleRelease
 android\app\src\main\res
 
 
+
+iOS memo
+------------------------------------------------------
+# npm install 
+# npm audit fix
+# sudo npm install -g react-native-cli
+# sudo gem install cocoapods 
+# cd ./ios  && pod install
+# react-native run-ios --simulator="iPhone 8"
+
+
+
+
+
+
 更新 ssl 步驟 ( ssl for free)
 ------------------------------------------------------
 1. 跑起來 web server on http port 80, 把下載的 file rename acme-challenge 放在 static/.well-known/acme-challenge
