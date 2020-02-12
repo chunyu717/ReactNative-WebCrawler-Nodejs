@@ -57,17 +57,19 @@ android\app\src\main\res
 
 
 
-iOS memo
+iOS step
 ------------------------------------------------------
+# requirement 
+using vmware 15.5.1, 
+macOS Unlocker V3.0 for VMware Workstation,  
+macOS Mojave ISO [Geekrar].iso
+
 # npm install 
 # npm audit fix
 # sudo npm install -g react-native-cli
 # sudo gem install cocoapods 
 # cd ./ios  && pod install
 # react-native run-ios --simulator="iPhone 8"
-
-
-
 
 
 
