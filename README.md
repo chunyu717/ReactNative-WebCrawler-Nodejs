@@ -63,13 +63,15 @@ iOS step
 using vmware 15.5.1, 
 macOS Unlocker V3.0 for VMware Workstation,  
 macOS Mojave ISO [Geekrar].iso
+instann nodejs
 
+# cd <Project>
 # npm install 
 # npm audit fix
 # sudo npm install -g react-native-cli
 # sudo gem install cocoapods 
 # cd ./ios  && pod install
-# react-native run-ios --simulator="iPhone 8"
+# cd .. && react-native run-ios --simulator="iPhone 8"
 
 
 
