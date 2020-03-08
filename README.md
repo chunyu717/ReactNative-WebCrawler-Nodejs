@@ -1,17 +1,17 @@
-# 建立專案 HosenMobileRN
-$ react-native init HosenMobileRN
+# Create react-native project <HosenMobileRN>
+- $ react-native init HosenMobileRN
 
-# 新增 android/local.properties
-sdk.dir=C\:\\Users\\jerry\\AppData\\Local\\Android\\sdk
+# add line below in android/local.properties
+ - sdk.dir=C\:\\Users\\jerry\\AppData\\Local\\Android\\sdk
 
-# 運行以下指令前必須先啟動 Android Studio 的 AVD manager ， 啟動 Andrdoi 模擬器 
-$ react-native run-android
+# Run command below,  thenactivate Andrdoi simulator by Android Studio AVD manager, 
+- $ react-native run-android
 
-# 打包上架的 app (https://facebook.github.io/react-native/docs/signed-apk-android)
-1. 用java keytool 產生 my-upload-key.keystore
+# flow the step to make your app online at google play store
+(ref : https://facebook.github.io/react-native/docs/signed-apk-android)
+1.  use java keytool to janerate 'my-upload-key.keystore'
 $ keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
-
-  放置於 android/app/my-upload-key.keystore
+2. put  android/app/my-upload-key.keystore
 2. android/gradle.properties
     MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
     MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
@@ -41,19 +41,25 @@ $ keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -k
         }
     }
     ...
-4. 以下指令產生 aab(Android App Bundle, like apk 檔案會在 android/app/build/outputs/bundle/release/app.aab
+4. command to generate aab(Android App Bundle, like apk )
+file will be locate  android/app/build/outputs/bundle/release/app.aab
 $ D:\workspace\HosenMobileRN\android> .\gradlew bundleRelease
 
-5. 測試 $ react-native run-android --variant=release
+5. test app 
+$ react-native run-android --variant=release
 
-6. 輸出 apk 檔案
+6. command output apk file :
 $ D:\workspace\HosenMobileRN\android> .\gradlew assembleRelease
-  - 檔案會在
+file will locate in : 
  D:\workspace\HosenMobileRN\android\app\build\outputs\apk\release
 
-# PS : 更改 app 的 icon 
+PS : change app icon 
 android\app\src\main\res
 
+backend : 
+------------------------------------------------------
+$ cd parser 
+$ node cralwerRNBackend.js 
 
 macOS iOS simulator setup.
 ------------------------------------------------------
@@ -73,14 +79,14 @@ macOS iOS simulator setup.
     # sudo gem install cocoapods 
     # cd ./ios  && pod install
     # cd .. && react-native run-ios --simulator="iPhone 8"
+    ** re-build solution:  $rm -rf ios/build/; kill $(lsof -t -i:8081); react-native run-ios
 
-
-更新 ssl 步驟 ( ssl for free)
+# renew  ssl  ( ssl for free)
 ------------------------------------------------------
-1. 跑起來 web server on http port 80, 把下載的 file rename acme-challenge 放在 static/.well-known/acme-challenge
-2. 透過官方存取  http://hosenmassage.ddns.net/.well-known/acme-challenge/4rJx8sdBNGcEzkkUTbi9OpeV5Xz0v7nTASy__LQXQiQ 
-3. 下載憑證 ca_bundle.crt, certificate.crt, private.key. 
-4. 以此專案來說 要把 ca_bundle.crt 的內容 append 到 certificate.crt 下面. 
+1. Run web server on http port 80, file download and rename 'acme-challenge' then put in static/.well-known/acme-challenge
+2. use ssl for free site to access :   http://hosenmassage.ddns.net/.well-known/acme-challenge/4rJx8sdBNGcEzkkUTbi9OpeV5Xz0v7nTASy__LQXQiQ 
+3. download certificate :  ca_bundle.crt, certificate.crt, private.key. 
+4. append  'ca_bundle.crt' content below certificate.crt 
 
-官方描述步驟如下 : 
+ref : 
 https://www.sslforfree.com/create?domains=hosenmassage.ddns.net
