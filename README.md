@@ -1,13 +1,40 @@
-# Create react-native project <HosenMobileRN>
-- $ react-native init HosenMobileRN
+This project use ReactNative, backend use nodejs crawl cline website then show to app.
 
-# add line below in android/local.properties
- - sdk.dir=C\:\\Users\\jerry\\AppData\\Local\\Android\\sdk
+![alt text](./readme_pic/demo1.jpg)
+![alt text](./readme_pic/demo2.jpg)
+![alt text](./readme_pic/demo3.jpg)
+![alt text](./readme_pic/demo4.jpg)
 
-# Run command below,  thenactivate Andrdoi simulator by Android Studio AVD manager, 
-- $ react-native run-android
 
-# flow the step to make your app online at google play store
+# Step : 
+### Create project
+>$ react-native init <projectName>
+### open android ide, open project android, add line below in android/local.properties
+> sdk.dir=C\:\\Users\\jerry\\AppData\\Local\\Android\\sdk
+### activate Andrdoi simulator by Android Studio AVD manager, then Run command below
+>$ set ANDROID_HOME=c:/Users/jerry/AppData/Local/Android/Sdk //windows    
+>$ xport ANDROID_HOME=~/Library/Android/sdk //Linux  
+>$ npm install  
+>$ npm install -g react-native-cli  
+>$ cd android && ./gradlew clean && ./gradlew :app:bundleRelease
+>$ react-native run-android  
+
+## backend 
+> $cd parser 
+> $npm install  
+> $node cralwerRNBackend.js   
+
+### renew  ssl  ( ssl for free)
+1. Run web server on http port 80, file download and rename 'acme-challenge' then put in static/.well-known/acme-challenge
+2. use ssl for free site to access :   http://hosenmassage.ddns.net/.well-known/acme-challenge/4rJx8sdBNGcEzkkUTbi9OpeV5Xz0v7nTASy__LQXQiQ 
+3. download certificate :  ca_bundle.crt, certificate.crt, private.key. 
+4. append  'ca_bundle.crt' content below certificate.crt 
+
+ref : 
+https://www.sslforfree.com/create?domains=hosenmassage.ddns.net
+
+
+# Step to make your app online at google play store
 (ref : https://facebook.github.io/react-native/docs/signed-apk-android)
 1.  use java keytool to janerate 'my-upload-key.keystore'
 $ keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
@@ -56,19 +83,14 @@ file will locate in :
 PS : change app icon 
 android\app\src\main\res
 
-backend : 
-------------------------------------------------------
-$ cd parser 
-$ node cralwerRNBackend.js 
 
-macOS iOS simulator setup.
-------------------------------------------------------
-# requirement 
+# macOS iOS simulator setup.
+### requirement 
     Install VMware 15.5.1 
     macOS Unlocker V3.0 for VMware Workstation, (https://techsprobe.com/download-macos-unlocker-install-on-vmware-workstation/)
     macOS Mojave ISO [Geekrar].iso (https://techsprobe.com/download-macos-mojave-10-14-iso-virtual-machine-images/)
 
-# Run app in macOS VM.
+## Run app in macOS VM.
     # install  Xcode (from app store)
     # clone the react-natvive project
     # Install nodejs
@@ -81,12 +103,3 @@ macOS iOS simulator setup.
     # cd .. && react-native run-ios --simulator="iPhone 8"
     ** re-build solution:  $rm -rf ios/build/; kill $(lsof -t -i:8081); react-native run-ios
 
-# renew  ssl  ( ssl for free)
-------------------------------------------------------
-1. Run web server on http port 80, file download and rename 'acme-challenge' then put in static/.well-known/acme-challenge
-2. use ssl for free site to access :   http://hosenmassage.ddns.net/.well-known/acme-challenge/4rJx8sdBNGcEzkkUTbi9OpeV5Xz0v7nTASy__LQXQiQ 
-3. download certificate :  ca_bundle.crt, certificate.crt, private.key. 
-4. append  'ca_bundle.crt' content below certificate.crt 
-
-ref : 
-https://www.sslforfree.com/create?domains=hosenmassage.ddns.net
