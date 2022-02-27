@@ -24,6 +24,15 @@ This project use ReactNative, backend use nodejs crawl cline website then show t
 > $npm install  
 > $node cralwerRNBackend.js   
 
+install dependency packages: cheerio request phatom  
+request 是用來訪問網站用的，它能模擬 Client 訪問網站，設定訪問時帶的 Header  
+cheerio 像jquery一樣用來解析網頁的  
+phantomjs 來抓取js渲染的網頁內容  
+script 說明 : 
+>$node ./cheerioSample.js  
+>$node ./phatomSample.js  
+>$node ./cralwerRNBackend.js
+
 ### renew  ssl  ( ssl for free)
 1. Run web server on http port 80, file download and rename 'acme-challenge' then put in static/.well-known/acme-challenge
 2. use ssl for free site to access :   http://hosenmassage.ddns.net/.well-known/acme-challenge/4rJx8sdBNGcEzkkUTbi9OpeV5Xz0v7nTASy__LQXQiQ 
